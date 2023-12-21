@@ -20,7 +20,8 @@ function isSameTree() {
     let current2 = root2;
     const stack1 = [];
     const stack2 = [];
-    let result = false;
+    let result1 = "";
+    let result2 = "";
 
     while ((current1 !== null || stack1.length) && (current2 !== null || stack2.length)) {
         while (current1 !== null && current2 !== null) {
@@ -33,16 +34,17 @@ function isSameTree() {
         current1 = stack1.pop();
         current2 = stack2.pop();
 
-        if(current1 === current2){
-            result = true
-        } else {
-            result = false
-        } 
+        result1.concat(current1);
+        result2.concat(current2);
 
         current1 = current1.right;
         current2 = current2.right;
     }
-    return result;
+    if (result1 === result2) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 console.log(isSameTree());
