@@ -14,3 +14,26 @@ root.right = new Node(3);
 root.right.left = new Node(5);
 root.right.left.left = new Node(6);
 
+function searchBottomLeftValue(root) {
+    const queue = [root];
+    let leftValue = 0;
+
+    while (queue.length > 0) {
+        const currentLevelSize = queue.length;
+        leftValue = queue[0].value;
+
+        for (let i = 0; i < currentLevelSize; i++) {
+            const current = queue.shift();
+
+            if (current.left) {
+                queue.push(current.left);
+            }
+            if (current.right) {
+                queue.push(current.right);
+            }
+        }
+    }
+    return leftValue;
+}
+
+console.log(searchBottomLeftValue(root))
