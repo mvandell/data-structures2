@@ -1,3 +1,4 @@
+//PART 1
 class Node {
     constructor(data) {
         this.value = data;
